@@ -47,11 +47,12 @@ RUN mkdir -p /home/coder/setup /home/coder/certs /home/coder/sites
 # Copy setup files
 COPY --chown=coder:coder setup.sh /home/coder/setup/
 COPY --chown=coder:coder minimal-setup.sh /home/coder/setup/
+COPY --chown=coder:coder codespaces-setup.sh /home/coder/setup/
 COPY --chown=coder:coder nginx.conf /home/coder/sites/
 COPY --chown=coder:coder code-server-config.yaml /home/coder/setup/
 
 # Make setup script executable
-RUN chmod +x /home/coder/setup/setup.sh /home/coder/setup/minimal-setup.sh
+RUN chmod +x /home/coder/setup/setup.sh /home/coder/setup/minimal-setup.sh /home/coder/setup/codespaces-setup.sh
 
 # Expose ports
 EXPOSE 80 8080 8443
@@ -60,4 +61,4 @@ EXPOSE 80 8080 8443
 WORKDIR /workspace
 
 # Start the setup script
-CMD ["/home/coder/setup/setup.sh"]
+CMD ["/home/coder/setup/codespaces-setup.sh"]
