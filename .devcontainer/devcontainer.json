@@ -1,0 +1,18 @@
+{
+  "name": "Full-Stack Dev Env",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "dev-container",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "coder",
+  "postAttachCommand": "echo 'Environment ready! Open https://localhost:8443'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-node-azure-pack",
+        "ms-python.python",
+        "vscjava.vscode-java-pack",
+        "brpaz.wsdl-web-service-preview"
+      ]
+    }
+  }
+}

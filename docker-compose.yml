@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  dev-container:
+    build:
+      context: ./setup
+      dockerfile: Dockerfile
+    container_name: rpi5-dev-env
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - ./workspace:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+      - code-server-data:/home/coder/.local/share/code-server
+      - coder-home:/home/coder
+    environment:
+      - CODE_SERVER_PASSWORD=${CODE_SERVER_PASSWORD:-password}
+    restart: unless-stopped
+    privileged: true
+
+volumes:
+  code-server-data:
+  coder-home:
